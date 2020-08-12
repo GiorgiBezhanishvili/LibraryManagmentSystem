@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KeepAutomation.Barcode.Crystal;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace LibraryManagmentSystem
 {
@@ -21,6 +23,8 @@ namespace LibraryManagmentSystem
             InitializeComponent();
             BooksData();
             GetGenres();
+            BooksInCombo();
+            CustommersInCombo();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +48,7 @@ namespace LibraryManagmentSystem
 
 
 
-            BooksDataGridView.DataSource = Books;
+            BooksListDGV.DataSource = Books;
         }
         #endregion
 
@@ -53,10 +57,14 @@ namespace LibraryManagmentSystem
         {
             var genres = (from g in context.Genres
                           select g);
+
+            //GenreLB.DisplayMember = "Genre1";
+            //GenreLB.ValueMember = "Id";
+            //GenreLB.DataSource = genres;
+
             foreach (var item in genres)
             {
                 GenreLB.Items.Add(item.Genre1);
-                //GenreLB.ValueMember = item.Id.;
             }
         }
         private void AddCustommerBtn_Click(object sender, EventArgs e)
@@ -181,11 +189,73 @@ namespace LibraryManagmentSystem
                 MessageBox.Show("ასეთი წიგნი უკვე რეგისტრირებულია");
             }
         }
+
         #endregion
 
+        private void GenerateBtn_Click(object sender, EventArgs e)
+        {
+            BarCode serial = new BarCode();
+            byte[] barcodeInBytes = serial.generateBarcodeToByteArray();
+        }
 
+        private void BorrowBtn_Click(object sender, EventArgs e)
+        {
+            var bookSerialNo = BooksCombo.SelectedValue.ToString();
+            var custPersonalNo = CustommerCombo.SelectedValue.ToString();
 
+            var bookId = (from bk in context.Books
+                          where bk.SerialNumber == bookSerialNo
+                          select bk.Id).FirstOrDefault();
+            var custId = (from cust in context.Custommers
+                          where cust.PersonalNumber == custPersonalNo
+                          select cust.Id).FirstOrDefault();
 
+            var returnDate = ReturnDateDTP.Value;
+            var borrowDate = DateTime.Today;
 
+            var borrow = new Borrow
+            {
+                CustomerId = custId,
+                BookId = bookId,
+                ReturnDate = returnDate,
+                OrderDate = borrowDate,
+            };
+
+            var book = new Book
+            {
+                IsActive = true
+            };
+
+            context.Books.Attach(book);
+            context.Borrows.InsertOnSubmit(borrow);
+            context.SubmitChanges();
+            MessageBox.Show("წიგნი წაღებულია წარმატებით");
+        }
+
+        private void BooksInCombo() 
+        {
+            var books = (from bk in context.Books
+                         select bk);
+
+            
+            BooksCombo.DisplayMember = "BookTitle";
+            BooksCombo.ValueMember = "SerialNumber";
+            BooksCombo.DataSource = books.Where(e => e.IsActive == false);
+        }
+
+        private void CustommersInCombo() 
+        {
+            var cust = (from c in context.Custommers
+                        select new
+                        {
+                            FullName = $"{c.Name} {c.LastName}",
+                            c.PersonalNumber
+                        });
+
+            CustommerCombo.DisplayMember = "FullName";
+            CustommerCombo.ValueMember = "PersonalNumber";
+            CustommerCombo.DataSource = cust;
+            
+        }
     }
 }
