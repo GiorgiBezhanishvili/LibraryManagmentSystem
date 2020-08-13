@@ -1,63 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.625, 9.125" name="Library">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="Library">
   <DataContextMoniker Name="/LibraryDataContext" />
   <nestedChildShapes>
-    <classShape Id="97f1530b-14bc-4be0-868b-fb9a92256a6f" absoluteBounds="5.25, 3.875, 2, 1.9631982421874996">
-      <DataClassMoniker Name="/LibraryDataContext/Book" />
+    <classShape Id="c5b79219-35d9-4be6-97ff-2eb92b8ac523" absoluteBounds="0.5, 6.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/LibraryDataContext/Author" />
       <nestedChildShapes>
-        <elementListCompartment Id="cde45473-9dcb-4b89-aaaa-9fde35ab4b8a" absoluteBounds="5.265, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ea97e1ed-c17b-4b08-81cd-8373fdb332d5" absoluteBounds="0.51500000000000012, 6.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d6232713-f174-4c67-86f3-77ecc661e359" absoluteBounds="1.375, 2.625, 2, 1.3862939453124996">
+    <classShape Id="90960d65-371a-43b0-9cc1-53031a3974f0" absoluteBounds="1.375, 1.125, 2, 1.3862939453125005">
       <DataClassMoniker Name="/LibraryDataContext/GenresOfBook" />
       <nestedChildShapes>
-        <elementListCompartment Id="a77b0bbf-e2ee-412e-b7f6-7204549bc6e9" absoluteBounds="1.3900000000000006, 3.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7a553bfc-3d83-401a-a9d9-8e46631d9652" absoluteBounds="1.3899999999999997, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="237aa831-aaee-4196-89f6-dc0035091c26" absoluteBounds="5.375, 1, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/LibraryDataContext/Genre" />
+    <classShape Id="07eab300-b939-4ce9-bf14-1a1567bfc86e" absoluteBounds="1.25, 3.375, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/LibraryDataContext/Book" />
       <nestedChildShapes>
-        <elementListCompartment Id="23e64acc-65cb-412e-b780-85d4d1ed2ab3" absoluteBounds="5.39, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b7dd5c59-d3ef-4874-9c93-c8f39d3e8690" absoluteBounds="1.2650000000000006, 3.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f6fdc8b3-a494-4dd8-b931-08813fbb76fb" absoluteBounds="5.25, 6.75, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/LibraryDataContext/Custommer" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e1d00980-f6ac-49d3-bdfd-f5c2542f9c76" absoluteBounds="5.265, 7.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="ffc6b597-57ae-419c-be3f-29c279324caf" absoluteBounds="10.375, 5.25, 2, 1.9631982421875">
+    <classShape Id="3c1f7f46-2814-4662-9e90-37691a404be2" absoluteBounds="6, 3.625, 2, 1.9631982421875">
       <DataClassMoniker Name="/LibraryDataContext/Borrow" />
       <nestedChildShapes>
-        <elementListCompartment Id="59628b43-a65b-4298-b4de-cb2bf1e3532e" absoluteBounds="10.39, 5.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="99fc1798-147c-4626-a3f9-3887fb086387" absoluteBounds="6.015, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.25 : 4.92474659375); (2.375 : 4.92474659375); (2.375 : 4.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="dc0318b1-068e-476a-b77c-a775b4aa99e5" absoluteBounds="6, 6.75, 2, 2.1554996744791657">
+      <DataClassMoniker Name="/LibraryDataContext/Custommer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b78fa96d-162c-4653-8dab-8a5266797040" absoluteBounds="6.0150000000000006, 7.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b31a29a-e59f-4a4f-beb2-9c67c79107e0" absoluteBounds="4.5, 1.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/LibraryDataContext/Genre" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9414dbf2-5b48-4400-9b6a-996dfe92611d" absoluteBounds="4.5150000000000006, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.3125 : 3.375); (2.3125 : 2.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LibraryDataContext/Book/Book_GenresOfBook" />
       <nodes>
-        <classShapeMoniker Id="97f1530b-14bc-4be0-868b-fb9a92256a6f" />
-        <classShapeMoniker Id="d6232713-f174-4c67-86f3-77ecc661e359" />
+        <classShapeMoniker Id="07eab300-b939-4ce9-bf14-1a1567bfc86e" />
+        <classShapeMoniker Id="90960d65-371a-43b0-9cc1-53031a3974f0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 1.59699625651042); (2.375 : 1.59699625651042); (2.375 : 2.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LibraryDataContext/Genre/Genre_GenresOfBook" />
+    <associationConnector edgePoints="[(1.875 : 6.5); (1.875 : 5.3381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LibraryDataContext/Author/Author_Book" />
       <nodes>
-        <classShapeMoniker Id="237aa831-aaee-4196-89f6-dc0035091c26" />
-        <classShapeMoniker Id="d6232713-f174-4c67-86f3-77ecc661e359" />
+        <classShapeMoniker Id="c5b79219-35d9-4be6-97ff-2eb92b8ac523" />
+        <classShapeMoniker Id="07eab300-b939-4ce9-bf14-1a1567bfc86e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 5.54409912109375); (10.375 : 5.54409912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.25 : 4.48159912109375); (6 : 4.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LibraryDataContext/Book/Book_Borrow" />
       <nodes>
-        <classShapeMoniker Id="97f1530b-14bc-4be0-868b-fb9a92256a6f" />
-        <classShapeMoniker Id="ffc6b597-57ae-419c-be3f-29c279324caf" />
+        <classShapeMoniker Id="07eab300-b939-4ce9-bf14-1a1567bfc86e" />
+        <classShapeMoniker Id="3c1f7f46-2814-4662-9e90-37691a404be2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 6.98159912109375); (10.375 : 6.98159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7 : 6.75); (7 : 5.5881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LibraryDataContext/Custommer/Custommer_Borrow" />
       <nodes>
-        <classShapeMoniker Id="f6fdc8b3-a494-4dd8-b931-08813fbb76fb" />
-        <classShapeMoniker Id="ffc6b597-57ae-419c-be3f-29c279324caf" />
+        <classShapeMoniker Id="dc0318b1-068e-476a-b77c-a775b4aa99e5" />
+        <classShapeMoniker Id="3c1f7f46-2814-4662-9e90-37691a404be2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 1.72199625651042); (3.375 : 1.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LibraryDataContext/Genre/Genre_GenresOfBook" />
+      <nodes>
+        <classShapeMoniker Id="7b31a29a-e59f-4a4f-beb2-9c67c79107e0" />
+        <classShapeMoniker Id="90960d65-371a-43b0-9cc1-53031a3974f0" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

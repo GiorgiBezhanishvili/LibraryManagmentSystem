@@ -32,7 +32,6 @@
             this.BookBorrowTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ReturnBtn = new System.Windows.Forms.Button();
-            this.ReturnBookCombo = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.AuthorCombo = new System.Windows.Forms.ComboBox();
@@ -46,20 +45,30 @@
             this.label14 = new System.Windows.Forms.Label();
             this.BooksListDGV = new System.Windows.Forms.DataGridView();
             this.AddBookTab = new System.Windows.Forms.TabPage();
-            this.GenerateBtn = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.AddAuthLastNameTB = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.AddAuthorBtn = new System.Windows.Forms.Button();
+            this.AddAuthNameTB = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.AddGenreBtn = new System.Windows.Forms.Button();
+            this.AddGenreTB = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.GenreLB = new System.Windows.Forms.ListBox();
+            this.GenerateBtn = new System.Windows.Forms.Button();
+            this.AddBookBtn = new System.Windows.Forms.Button();
+            this.BookTitleTB = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SerialNoTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.PublishDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.AuthorTB = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BookTitleTB = new System.Windows.Forms.TextBox();
-            this.AddBookBtn = new System.Windows.Forms.Button();
             this.AddCustommerTab = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.PersonalNoTB = new System.Windows.Forms.TextBox();
@@ -74,32 +83,27 @@
             this.label6 = new System.Windows.Forms.Label();
             this.NameTB = new System.Windows.Forms.TextBox();
             this.AddCustommerBtn = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.AddGenreTB = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.AddGenreBtn = new System.Windows.Forms.Button();
-            this.AddAuthorBtn = new System.Windows.Forms.Button();
-            this.AddAuthNameTB = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.AddAuthLastNameTB = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ShowBtn = new System.Windows.Forms.Button();
+            this.ReturnBookSNTB = new System.Windows.Forms.TextBox();
+            this.ReturnBookNameLbl = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.BookBorrowTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksListDGV)).BeginInit();
             this.AddBookTab.SuspendLayout();
-            this.AddCustommerTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.AddCustommerTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -132,8 +136,11 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox4.Controls.Add(this.SearchBtn);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.ReturnBookNameLbl);
+            this.groupBox4.Controls.Add(this.ReturnBookSNTB);
             this.groupBox4.Controls.Add(this.ReturnBtn);
-            this.groupBox4.Controls.Add(this.ReturnBookCombo);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Location = new System.Drawing.Point(6, 244);
             this.groupBox4.Name = "groupBox4";
@@ -144,33 +151,27 @@
             // 
             // ReturnBtn
             // 
-            this.ReturnBtn.Location = new System.Drawing.Point(143, 104);
+            this.ReturnBtn.Location = new System.Drawing.Point(133, 121);
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(75, 23);
             this.ReturnBtn.TabIndex = 8;
             this.ReturnBtn.Text = "Return Book";
             this.ReturnBtn.UseVisualStyleBackColor = true;
-            // 
-            // ReturnBookCombo
-            // 
-            this.ReturnBookCombo.FormattingEnabled = true;
-            this.ReturnBookCombo.Location = new System.Drawing.Point(89, 51);
-            this.ReturnBookCombo.Name = "ReturnBookCombo";
-            this.ReturnBookCombo.Size = new System.Drawing.Size(200, 21);
-            this.ReturnBookCombo.TabIndex = 6;
+            this.ReturnBtn.Click += new System.EventHandler(this.ReturnBtn_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(28, 54);
+            this.label12.Location = new System.Drawing.Point(2, 54);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.Size = new System.Drawing.Size(73, 13);
             this.label12.TabIndex = 7;
-            this.label12.Text = "Books";
+            this.label12.Text = "Serial Number";
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox3.Controls.Add(this.ShowBtn);
             this.groupBox3.Controls.Add(this.AuthorCombo);
             this.groupBox3.Controls.Add(this.AuthorLBL);
             this.groupBox3.Controls.Add(this.BooksCombo);
@@ -190,7 +191,7 @@
             // AuthorCombo
             // 
             this.AuthorCombo.FormattingEnabled = true;
-            this.AuthorCombo.Location = new System.Drawing.Point(89, 33);
+            this.AuthorCombo.Location = new System.Drawing.Point(79, 34);
             this.AuthorCombo.Name = "AuthorCombo";
             this.AuthorCombo.Size = new System.Drawing.Size(200, 21);
             this.AuthorCombo.TabIndex = 12;
@@ -198,7 +199,7 @@
             // AuthorLBL
             // 
             this.AuthorLBL.AutoSize = true;
-            this.AuthorLBL.Location = new System.Drawing.Point(28, 36);
+            this.AuthorLBL.Location = new System.Drawing.Point(18, 37);
             this.AuthorLBL.Name = "AuthorLBL";
             this.AuthorLBL.Size = new System.Drawing.Size(38, 13);
             this.AuthorLBL.TabIndex = 13;
@@ -207,14 +208,14 @@
             // BooksCombo
             // 
             this.BooksCombo.FormattingEnabled = true;
-            this.BooksCombo.Location = new System.Drawing.Point(89, 73);
+            this.BooksCombo.Location = new System.Drawing.Point(79, 74);
             this.BooksCombo.Name = "BooksCombo";
             this.BooksCombo.Size = new System.Drawing.Size(200, 21);
             this.BooksCombo.TabIndex = 4;
             // 
             // BorrowBtn
             // 
-            this.BorrowBtn.Location = new System.Drawing.Point(143, 194);
+            this.BorrowBtn.Location = new System.Drawing.Point(133, 195);
             this.BorrowBtn.Name = "BorrowBtn";
             this.BorrowBtn.Size = new System.Drawing.Size(75, 23);
             this.BorrowBtn.TabIndex = 11;
@@ -225,7 +226,7 @@
             // lacel14
             // 
             this.lacel14.AutoSize = true;
-            this.lacel14.Location = new System.Drawing.Point(28, 76);
+            this.lacel14.Location = new System.Drawing.Point(18, 77);
             this.lacel14.Name = "lacel14";
             this.lacel14.Size = new System.Drawing.Size(37, 13);
             this.lacel14.TabIndex = 5;
@@ -233,7 +234,8 @@
             // 
             // ReturnDateDTP
             // 
-            this.ReturnDateDTP.Location = new System.Drawing.Point(89, 152);
+            this.ReturnDateDTP.Location = new System.Drawing.Point(79, 153);
+            this.ReturnDateDTP.MinDate = new System.DateTime(2020, 8, 13, 0, 0, 0, 0);
             this.ReturnDateDTP.Name = "ReturnDateDTP";
             this.ReturnDateDTP.Size = new System.Drawing.Size(200, 20);
             this.ReturnDateDTP.TabIndex = 10;
@@ -241,7 +243,7 @@
             // CustommerCombo
             // 
             this.CustommerCombo.FormattingEnabled = true;
-            this.CustommerCombo.Location = new System.Drawing.Point(89, 113);
+            this.CustommerCombo.Location = new System.Drawing.Point(79, 114);
             this.CustommerCombo.Name = "CustommerCombo";
             this.CustommerCombo.Size = new System.Drawing.Size(200, 21);
             this.CustommerCombo.TabIndex = 6;
@@ -249,7 +251,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 152);
+            this.label15.Location = new System.Drawing.Point(2, 153);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 13);
             this.label15.TabIndex = 9;
@@ -258,7 +260,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 116);
+            this.label14.Location = new System.Drawing.Point(2, 117);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 13);
             this.label14.TabIndex = 7;
@@ -266,9 +268,12 @@
             // 
             // BooksListDGV
             // 
+            this.BooksListDGV.AllowUserToAddRows = false;
+            this.BooksListDGV.AllowUserToDeleteRows = false;
             this.BooksListDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BooksListDGV.Location = new System.Drawing.Point(359, 6);
             this.BooksListDGV.Name = "BooksListDGV";
+            this.BooksListDGV.ReadOnly = true;
             this.BooksListDGV.Size = new System.Drawing.Size(430, 415);
             this.BooksListDGV.TabIndex = 0;
             // 
@@ -285,15 +290,129 @@
             this.AddBookTab.TabIndex = 2;
             this.AddBookTab.Text = "Add Book & etc";
             // 
-            // GenerateBtn
+            // groupBox6
             // 
-            this.GenerateBtn.Location = new System.Drawing.Point(258, 205);
-            this.GenerateBtn.Name = "GenerateBtn";
-            this.GenerateBtn.Size = new System.Drawing.Size(75, 23);
-            this.GenerateBtn.TabIndex = 28;
-            this.GenerateBtn.Text = "Generate";
-            this.GenerateBtn.UseVisualStyleBackColor = true;
-            this.GenerateBtn.Click += new System.EventHandler(this.GenerateBtn_Click);
+            this.groupBox6.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox6.Controls.Add(this.AddAuthLastNameTB);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.AddAuthorBtn);
+            this.groupBox6.Controls.Add(this.AddAuthNameTB);
+            this.groupBox6.Controls.Add(this.label16);
+            this.groupBox6.Location = new System.Drawing.Point(438, 216);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(351, 205);
+            this.groupBox6.TabIndex = 31;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Add Author";
+            // 
+            // AddAuthLastNameTB
+            // 
+            this.AddAuthLastNameTB.Location = new System.Drawing.Point(81, 107);
+            this.AddAuthLastNameTB.Name = "AddAuthLastNameTB";
+            this.AddAuthLastNameTB.Size = new System.Drawing.Size(217, 20);
+            this.AddAuthLastNameTB.TabIndex = 10;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 107);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(58, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Last Name";
+            // 
+            // AddAuthorBtn
+            // 
+            this.AddAuthorBtn.Location = new System.Drawing.Point(140, 147);
+            this.AddAuthorBtn.Name = "AddAuthorBtn";
+            this.AddAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddAuthorBtn.TabIndex = 9;
+            this.AddAuthorBtn.Text = "Add Author";
+            this.AddAuthorBtn.UseVisualStyleBackColor = true;
+            // 
+            // AddAuthNameTB
+            // 
+            this.AddAuthNameTB.Location = new System.Drawing.Point(81, 60);
+            this.AddAuthNameTB.Name = "AddAuthNameTB";
+            this.AddAuthNameTB.Size = new System.Drawing.Size(217, 20);
+            this.AddAuthNameTB.TabIndex = 7;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(29, 60);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Name";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox5.Controls.Add(this.AddGenreBtn);
+            this.groupBox5.Controls.Add(this.AddGenreTB);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Location = new System.Drawing.Point(438, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(351, 205);
+            this.groupBox5.TabIndex = 30;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Add Genre";
+            // 
+            // AddGenreBtn
+            // 
+            this.AddGenreBtn.Location = new System.Drawing.Point(140, 139);
+            this.AddGenreBtn.Name = "AddGenreBtn";
+            this.AddGenreBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddGenreBtn.TabIndex = 6;
+            this.AddGenreBtn.Text = "Add Genre";
+            this.AddGenreBtn.UseVisualStyleBackColor = true;
+            // 
+            // AddGenreTB
+            // 
+            this.AddGenreTB.Location = new System.Drawing.Point(87, 93);
+            this.AddGenreTB.Name = "AddGenreTB";
+            this.AddGenreTB.Size = new System.Drawing.Size(217, 20);
+            this.AddGenreTB.TabIndex = 4;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(34, 96);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Genre";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.GenreLB);
+            this.groupBox2.Controls.Add(this.GenerateBtn);
+            this.groupBox2.Controls.Add(this.AddBookBtn);
+            this.groupBox2.Controls.Add(this.BookTitleTB);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.SerialNoTB);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.PublishDatePicker);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(426, 415);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Add Book";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(116, 100);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(217, 21);
+            this.comboBox1.TabIndex = 29;
             // 
             // GenreLB
             // 
@@ -304,6 +423,33 @@
             this.GenreLB.Size = new System.Drawing.Size(217, 95);
             this.GenreLB.TabIndex = 27;
             // 
+            // GenerateBtn
+            // 
+            this.GenerateBtn.Location = new System.Drawing.Point(258, 205);
+            this.GenerateBtn.Name = "GenerateBtn";
+            this.GenerateBtn.Size = new System.Drawing.Size(75, 23);
+            this.GenerateBtn.TabIndex = 28;
+            this.GenerateBtn.Text = "Generate";
+            this.GenerateBtn.UseVisualStyleBackColor = true;
+            this.GenerateBtn.Click += new System.EventHandler(this.GenerateBtn_Click);
+            // 
+            // AddBookBtn
+            // 
+            this.AddBookBtn.Location = new System.Drawing.Point(116, 373);
+            this.AddBookBtn.Name = "AddBookBtn";
+            this.AddBookBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddBookBtn.TabIndex = 0;
+            this.AddBookBtn.Text = "Add Book";
+            this.AddBookBtn.UseVisualStyleBackColor = true;
+            this.AddBookBtn.Click += new System.EventHandler(this.AddBookBtn_Click);
+            // 
+            // BookTitleTB
+            // 
+            this.BookTitleTB.Location = new System.Drawing.Point(116, 52);
+            this.BookTitleTB.Name = "BookTitleTB";
+            this.BookTitleTB.Size = new System.Drawing.Size(217, 20);
+            this.BookTitleTB.TabIndex = 2;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -312,6 +458,15 @@
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Serial Number";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Book Title";
             // 
             // SerialNoTB
             // 
@@ -329,6 +484,15 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Genre";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(61, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Author";
+            // 
             // PublishDatePicker
             // 
             this.PublishDatePicker.Location = new System.Drawing.Point(116, 149);
@@ -345,48 +509,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Publish Date";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 100);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Author";
-            // 
-            // AuthorTB
-            // 
-            this.AuthorTB.Location = new System.Drawing.Point(116, 100);
-            this.AuthorTB.Name = "AuthorTB";
-            this.AuthorTB.Size = new System.Drawing.Size(217, 20);
-            this.AuthorTB.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Book Title";
-            // 
-            // BookTitleTB
-            // 
-            this.BookTitleTB.Location = new System.Drawing.Point(116, 52);
-            this.BookTitleTB.Name = "BookTitleTB";
-            this.BookTitleTB.Size = new System.Drawing.Size(217, 20);
-            this.BookTitleTB.TabIndex = 2;
-            // 
-            // AddBookBtn
-            // 
-            this.AddBookBtn.Location = new System.Drawing.Point(116, 373);
-            this.AddBookBtn.Name = "AddBookBtn";
-            this.AddBookBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddBookBtn.TabIndex = 0;
-            this.AddBookBtn.Text = "Add Book";
-            this.AddBookBtn.UseVisualStyleBackColor = true;
-            this.AddBookBtn.Click += new System.EventHandler(this.AddBookBtn_Click);
-            // 
             // AddCustommerTab
             // 
             this.AddCustommerTab.BackColor = System.Drawing.Color.YellowGreen;
@@ -398,14 +520,6 @@
             this.AddCustommerTab.Size = new System.Drawing.Size(795, 427);
             this.AddCustommerTab.TabIndex = 3;
             this.AddCustommerTab.Text = "Add  Custommer";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(384, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(405, 415);
-            this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -535,121 +649,13 @@
             this.AddCustommerBtn.Text = "Add Custommer";
             this.AddCustommerBtn.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // dataGridView1
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Goldenrod;
-            this.groupBox2.Controls.Add(this.GenreLB);
-            this.groupBox2.Controls.Add(this.GenerateBtn);
-            this.groupBox2.Controls.Add(this.AddBookBtn);
-            this.groupBox2.Controls.Add(this.BookTitleTB);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.SerialNoTB);
-            this.groupBox2.Controls.Add(this.AuthorTB);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.PublishDatePicker);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(426, 415);
-            this.groupBox2.TabIndex = 29;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add Book";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.Goldenrod;
-            this.groupBox5.Controls.Add(this.AddGenreBtn);
-            this.groupBox5.Controls.Add(this.AddGenreTB);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Location = new System.Drawing.Point(438, 6);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(351, 205);
-            this.groupBox5.TabIndex = 30;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Add Genre";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.Goldenrod;
-            this.groupBox6.Controls.Add(this.AddAuthLastNameTB);
-            this.groupBox6.Controls.Add(this.label17);
-            this.groupBox6.Controls.Add(this.AddAuthorBtn);
-            this.groupBox6.Controls.Add(this.AddAuthNameTB);
-            this.groupBox6.Controls.Add(this.label16);
-            this.groupBox6.Location = new System.Drawing.Point(438, 216);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(351, 205);
-            this.groupBox6.TabIndex = 31;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Add Author";
-            // 
-            // AddGenreTB
-            // 
-            this.AddGenreTB.Location = new System.Drawing.Point(103, 92);
-            this.AddGenreTB.Name = "AddGenreTB";
-            this.AddGenreTB.Size = new System.Drawing.Size(217, 20);
-            this.AddGenreTB.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(50, 95);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Genre";
-            // 
-            // AddGenreBtn
-            // 
-            this.AddGenreBtn.Location = new System.Drawing.Point(162, 139);
-            this.AddGenreBtn.Name = "AddGenreBtn";
-            this.AddGenreBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddGenreBtn.TabIndex = 6;
-            this.AddGenreBtn.Text = "Add Genre";
-            this.AddGenreBtn.UseVisualStyleBackColor = true;
-            // 
-            // AddAuthorBtn
-            // 
-            this.AddAuthorBtn.Location = new System.Drawing.Point(162, 148);
-            this.AddAuthorBtn.Name = "AddAuthorBtn";
-            this.AddAuthorBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddAuthorBtn.TabIndex = 9;
-            this.AddAuthorBtn.Text = "Add Author";
-            this.AddAuthorBtn.UseVisualStyleBackColor = true;
-            // 
-            // AddAuthNameTB
-            // 
-            this.AddAuthNameTB.Location = new System.Drawing.Point(103, 61);
-            this.AddAuthNameTB.Name = "AddAuthNameTB";
-            this.AddAuthNameTB.Size = new System.Drawing.Size(217, 20);
-            this.AddAuthNameTB.TabIndex = 7;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(51, 61);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 13);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Name";
-            // 
-            // AddAuthLastNameTB
-            // 
-            this.AddAuthLastNameTB.Location = new System.Drawing.Point(103, 108);
-            this.AddAuthLastNameTB.Name = "AddAuthLastNameTB";
-            this.AddAuthLastNameTB.Size = new System.Drawing.Size(217, 20);
-            this.AddAuthLastNameTB.TabIndex = 10;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(28, 108);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Last Name";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(384, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(405, 415);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -663,17 +669,6 @@
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Report";
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 66);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(783, 355);
-            this.dataGridView2.TabIndex = 0;
-            // 
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Modern No. 20", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -685,6 +680,63 @@
             this.label18.TabIndex = 1;
             this.label18.Text = "Report";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 66);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(783, 355);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // ShowBtn
+            // 
+            this.ShowBtn.Location = new System.Drawing.Point(286, 34);
+            this.ShowBtn.Name = "ShowBtn";
+            this.ShowBtn.Size = new System.Drawing.Size(55, 21);
+            this.ShowBtn.TabIndex = 14;
+            this.ShowBtn.Text = "Show";
+            this.ShowBtn.UseVisualStyleBackColor = true;
+            this.ShowBtn.Click += new System.EventHandler(this.ShowBtn_Click);
+            // 
+            // ReturnBookSNTB
+            // 
+            this.ReturnBookSNTB.Location = new System.Drawing.Point(79, 51);
+            this.ReturnBookSNTB.Name = "ReturnBookSNTB";
+            this.ReturnBookSNTB.Size = new System.Drawing.Size(200, 20);
+            this.ReturnBookSNTB.TabIndex = 9;
+            // 
+            // ReturnBookNameLbl
+            // 
+            this.ReturnBookNameLbl.AutoSize = true;
+            this.ReturnBookNameLbl.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReturnBookNameLbl.ForeColor = System.Drawing.Color.Indigo;
+            this.ReturnBookNameLbl.Location = new System.Drawing.Point(99, 90);
+            this.ReturnBookNameLbl.Name = "ReturnBookNameLbl";
+            this.ReturnBookNameLbl.Size = new System.Drawing.Size(0, 16);
+            this.ReturnBookNameLbl.TabIndex = 10;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(88, 26);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(172, 13);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "Write Down Serial Number of Book";
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(286, 50);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(55, 21);
+            this.SearchBtn.TabIndex = 15;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // Form1
             // 
@@ -703,16 +755,16 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksListDGV)).EndInit();
             this.AddBookTab.ResumeLayout(false);
-            this.AddCustommerTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.AddCustommerTab.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -730,7 +782,6 @@
         private System.Windows.Forms.DateTimePicker PublishDatePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox AuthorTB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox BookTitleTB;
         private System.Windows.Forms.Button AddBookBtn;
@@ -746,7 +797,6 @@
         private System.Windows.Forms.DataGridView BooksListDGV;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button ReturnBtn;
-        private System.Windows.Forms.ComboBox ReturnBookCombo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox AuthorCombo;
@@ -781,6 +831,12 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button ShowBtn;
+        private System.Windows.Forms.Label ReturnBookNameLbl;
+        private System.Windows.Forms.TextBox ReturnBookSNTB;
+        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.Label label19;
     }
 }
 

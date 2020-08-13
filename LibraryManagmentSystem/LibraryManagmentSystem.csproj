@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Library.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookDTO.cs" />
     <Compile Include="Models\BookVM.cs" />
     <Compile Include="Models\CustommerVM.cs" />
     <Compile Include="Program.cs" />
