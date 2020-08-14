@@ -86,12 +86,13 @@
             this.CustommersDGV = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ReportDGV = new System.Windows.Forms.DataGridView();
             this.ShowBtn = new System.Windows.Forms.Button();
             this.ReturnBookSNTB = new System.Windows.Forms.TextBox();
             this.ReturnBookNameLbl = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.ResetBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.BookBorrowTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -105,7 +106,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -136,6 +137,7 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Goldenrod;
+            this.groupBox4.Controls.Add(this.ResetBtn);
             this.groupBox4.Controls.Add(this.SearchBtn);
             this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.ReturnBookNameLbl);
@@ -151,7 +153,7 @@
             // 
             // ReturnBtn
             // 
-            this.ReturnBtn.Location = new System.Drawing.Point(133, 121);
+            this.ReturnBtn.Location = new System.Drawing.Point(91, 118);
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(75, 23);
             this.ReturnBtn.TabIndex = 8;
@@ -668,7 +670,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.YellowGreen;
             this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.dataGridView2);
+            this.tabPage1.Controls.Add(this.ReportDGV);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -688,16 +690,16 @@
             this.label18.Text = "Report";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView2
+            // ReportDGV
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 66);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(783, 355);
-            this.dataGridView2.TabIndex = 0;
+            this.ReportDGV.AllowUserToAddRows = false;
+            this.ReportDGV.AllowUserToDeleteRows = false;
+            this.ReportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReportDGV.Location = new System.Drawing.Point(6, 66);
+            this.ReportDGV.Name = "ReportDGV";
+            this.ReportDGV.ReadOnly = true;
+            this.ReportDGV.Size = new System.Drawing.Size(783, 355);
+            this.ReportDGV.TabIndex = 0;
             // 
             // ShowBtn
             // 
@@ -745,6 +747,16 @@
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
+            // ResetBtn
+            // 
+            this.ResetBtn.Location = new System.Drawing.Point(185, 118);
+            this.ResetBtn.Name = "ResetBtn";
+            this.ResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.ResetBtn.TabIndex = 16;
+            this.ResetBtn.Text = "Reset";
+            this.ResetBtn.UseVisualStyleBackColor = true;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -773,7 +785,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -837,13 +849,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView ReportDGV;
         private System.Windows.Forms.ComboBox AddBookAuthorCombo;
         private System.Windows.Forms.Button ShowBtn;
         private System.Windows.Forms.Label ReturnBookNameLbl;
         private System.Windows.Forms.TextBox ReturnBookSNTB;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button ResetBtn;
     }
 }
 

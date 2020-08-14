@@ -29,6 +29,7 @@ namespace LibraryManagmentSystem
             AuthorsInCombo();
             CustommersInCombo();
             GetCustommersData();
+            GetReportData();
         }
 
         
@@ -202,6 +203,7 @@ namespace LibraryManagmentSystem
 
             context.SubmitChanges();
             BooksData();
+            GetReportData();
             MessageBox.Show($"წიგნი გაიტანა {customr.FullName}");
         }
 
@@ -359,9 +361,18 @@ namespace LibraryManagmentSystem
             context.SubmitChanges();
 
             BooksData();
+            GetReportData();
             ReturnBookSNTB.Clear();
             ReturnBookNameLbl.ResetText();
 
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            ReturnBookNameLbl.Text = "";
+            ReturnBookSNTB.Clear();
+            infoTransferBookId = 0;
+            infoTransferBorrowId = 0;
         }
 
         #endregion of Borrow Book Tab
@@ -685,5 +696,30 @@ namespace LibraryManagmentSystem
         #endregion of Add Custommer Tab
 
 
+        #region Report Tab
+
+
+        private void GetReportData() 
+        {
+            var reportData = (from book in context.Books
+                              join borrow in context.Borrows on book.Id equals borrow.BookId
+                              join custommer in context.Custommers on borrow.CustomerId equals custommer.Id
+                              select new 
+                              {
+                                  BookTitle = book.BookTitle,
+                                  Custommer = $"{custommer.Name} {custommer.LastName}",
+                                  OrderDate = borrow.OrderDate,
+                                  EstimatedReturnDate = borrow.ReturnDate,
+                                  ActualReturnDate = borrow.ActualReturnDate
+                              });
+
+            ReportDGV.DataSource = reportData;
+
+        }
+
+
+        #endregion of Report Tab
+
+        
     }
 }
