@@ -83,7 +83,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.NameTB = new System.Windows.Forms.TextBox();
             this.AddCustommerBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CustommersDGV = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -103,7 +103,7 @@
             this.groupBox2.SuspendLayout();
             this.AddCustommerTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -234,11 +234,13 @@
             // 
             // ReturnDateDTP
             // 
+            this.ReturnDateDTP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.ReturnDateDTP.Location = new System.Drawing.Point(79, 153);
-            this.ReturnDateDTP.MinDate = new System.DateTime(2020, 8, 13, 0, 0, 0, 0);
+            this.ReturnDateDTP.MinDate = new System.DateTime(2020, 8, 14, 0, 0, 0, 0);
             this.ReturnDateDTP.Name = "ReturnDateDTP";
             this.ReturnDateDTP.Size = new System.Drawing.Size(200, 20);
             this.ReturnDateDTP.TabIndex = 10;
+            this.ReturnDateDTP.Value = new System.DateTime(2020, 8, 14, 0, 0, 0, 0);
             // 
             // CustommerCombo
             // 
@@ -516,7 +518,7 @@
             // 
             this.AddCustommerTab.BackColor = System.Drawing.Color.YellowGreen;
             this.AddCustommerTab.Controls.Add(this.groupBox1);
-            this.AddCustommerTab.Controls.Add(this.dataGridView1);
+            this.AddCustommerTab.Controls.Add(this.CustommersDGV);
             this.AddCustommerTab.Location = new System.Drawing.Point(4, 22);
             this.AddCustommerTab.Name = "AddCustommerTab";
             this.AddCustommerTab.Padding = new System.Windows.Forms.Padding(3);
@@ -598,6 +600,7 @@
             // BirthdayDatePicker
             // 
             this.BirthdayDatePicker.Location = new System.Drawing.Point(99, 145);
+            this.BirthdayDatePicker.MaxDate = new System.DateTime(2020, 8, 14, 6, 55, 37, 0);
             this.BirthdayDatePicker.Name = "BirthdayDatePicker";
             this.BirthdayDatePicker.Size = new System.Drawing.Size(200, 20);
             this.BirthdayDatePicker.TabIndex = 33;
@@ -651,14 +654,15 @@
             this.AddCustommerBtn.TabIndex = 27;
             this.AddCustommerBtn.Text = "Add Custommer";
             this.AddCustommerBtn.UseVisualStyleBackColor = true;
+            this.AddCustommerBtn.Click += new System.EventHandler(this.AddCustommerBtn_Click_1);
             // 
-            // dataGridView1
+            // CustommersDGV
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(384, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(405, 415);
-            this.dataGridView1.TabIndex = 0;
+            this.CustommersDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustommersDGV.Location = new System.Drawing.Point(384, 6);
+            this.CustommersDGV.Name = "CustommersDGV";
+            this.CustommersDGV.Size = new System.Drawing.Size(405, 415);
+            this.CustommersDGV.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -767,7 +771,7 @@
             this.AddCustommerTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -819,7 +823,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox NameTB;
         private System.Windows.Forms.Button AddCustommerBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView CustommersDGV;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox AddAuthLastNameTB;

@@ -28,6 +28,7 @@ namespace LibraryManagmentSystem
             GetGenres();
             AuthorsInCombo();
             CustommersInCombo();
+            GetCustommersData();
         }
 
         
@@ -573,62 +574,116 @@ namespace LibraryManagmentSystem
 
         #endregion of Add Book Tab
 
-        #region Registration Tab
 
-        private void AddCustommerBtn_Click(object sender, EventArgs e)
+
+        #region Add Custommer Tab
+
+        private void AddCustommerBtn_Click_1(object sender, EventArgs e)
         {
-            ////აქ CustommerVM მაგივრად შემეძლო შემოტანილი მნიშვნელობები პირდაპირ Custommer
-            //// ცხრილში ჩამეწერა მარა მერე შეზღუდვებს ვეღა დავადებდი და ასე გავაკეთე  ---
-            //var custommer = new CustommerVM
-            //{
-            //    Name = NameTB.Text,
-            //    LastName = LastNameTB.Text,
-            //    Birthday = BirthdayDatePicker.Value,
-            //    Email = EmailTB.Text,
-            //    Address = AddressTB.Text,
-            //    PersonalNumber = PersonalNoTB.Text
-            //};
+            // Validations
 
-            //var ifExist = (from cust in context.Custommers
-            //               where cust.PersonalNumber == custommer.PersonalNumber
-            //               select cust).FirstOrDefault();
+            if (NameTB.Text == "") 
+            {
+                MessageBox.Show("შეავსეთ სახელის ველი");
+                return;
+            }
 
-            //if (ifExist == null)
-            //{
-            //    var cust = new Custommer
-            //    {
-            //        Name = custommer.Name,
-            //        LastName = custommer.LastName,
-            //        BirthDay = custommer.Birthday,
-            //        Email = custommer.Email,
-            //        Address = custommer.Address,
-            //        PersonalNumber = custommer.PersonalNumber
-            //    };
-            //    context.Custommers.InsertOnSubmit(cust);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("ასეთი მომხმარებელი უკვე რეგისტრირებულია");
-            //}
+            if (LastNameTB.Text == "")
+            {
+                MessageBox.Show("შეავსეთ გვარის ველი");
+                return;
+            }
 
-            //context.SubmitChanges();
+            if (BirthdayDatePicker.Value.Date == DateTime.Today)
+            {
+                MessageBox.Show("ღადაობ?");
+                return;
+            }
 
-            //NameTB.Clear();
-            //LastNameTB.Clear();
-            //EmailTB.Clear();
-            //AddressTB.Clear();
-            //PersonalNoTB.Clear();
+            if (EmailTB.Text == "")
+            {
+                MessageBox.Show("შეავსეთ მეილის ველი");
+                return;
+            }
+            
+            // validating email
+            System.Text.RegularExpressions.Regex expr = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (!expr.IsMatch(EmailTB.Text))
+            {
+                MessageBox.Show("მეილის არასწორი ფორმატი");
+                return;
+            }
 
-            //MessageBox.Show("მომხმარებელი დაემატა წარმატებით");
+            if (AddressTB.Text == "")
+            {
+                MessageBox.Show("შეავსეთ მისამართის ველი");
+                return;
+            }
+
+            if (PersonalNoTB.Text == "" || PersonalNoTB.Text.Length != 11)
+            {
+                MessageBox.Show("შეავსეთ პირადი ნორმის ველი \n" +
+                    "პირადი ნომრის ველი უნდა შედგებოდეს რიცხვებისგან \n" +
+                    "და უნდა შეიცავდეს 11 ციფრს");
+                return;
+            }
+
+            var personMatch = (from pm in context.Custommers
+                               where pm.PersonalNumber == PersonalNoTB.Text
+                               select pm).FirstOrDefault();
+            if (personMatch != null) 
+            {
+                MessageBox.Show("მომხმარებელი მსგავსი პირადი ნომრით უკვე რეგისტრირებულია");
+                return;
+            }
+
+
+
+            var custommer = new CustommerVM
+            {
+                Name = NameTB.Text,
+                LastName = LastNameTB.Text,
+                Birthday = BirthdayDatePicker.Value,
+                Email = EmailTB.Text,
+                Address = AddressTB.Text,
+                PersonalNumber = PersonalNoTB.Text
+            };
+
+            var cust = new Custommer
+            {
+                Name = custommer.Name,
+                LastName = custommer.LastName,
+                BirthDay = custommer.Birthday,
+                Email = custommer.Email,
+                Address = custommer.Address,
+                PersonalNumber = custommer.PersonalNumber
+            };
+            context.Custommers.InsertOnSubmit(cust);
+
+
+            context.SubmitChanges();
+
+            NameTB.Clear();
+            LastNameTB.Clear();
+            EmailTB.Clear();
+            AddressTB.Clear();
+            PersonalNoTB.Clear();
+
+            MessageBox.Show("მომხმარებელი დაემატა წარმატებით");
+
+            GetCustommersData();
         }
 
+        private void GetCustommersData() 
+        {
+            var custommers = (from c in context.Custommers
+                              select c);
+            CustommersDGV.DataSource = custommers;
+            CustommersDGV.Columns["Id"].Visible = false;
+        }
+
+        #endregion of Add Custommer Tab
 
 
-
-
-
-        #endregion
-
-       
     }
 }
