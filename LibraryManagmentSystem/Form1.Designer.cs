@@ -56,7 +56,7 @@
             this.AddGenreTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.AddBookAuthorCombo = new System.Windows.Forms.ComboBox();
             this.GenreLB = new System.Windows.Forms.ListBox();
             this.GenerateBtn = new System.Windows.Forms.Button();
             this.AddBookBtn = new System.Windows.Forms.Button();
@@ -329,6 +329,7 @@
             this.AddAuthorBtn.TabIndex = 9;
             this.AddAuthorBtn.Text = "Add Author";
             this.AddAuthorBtn.UseVisualStyleBackColor = true;
+            this.AddAuthorBtn.Click += new System.EventHandler(this.AddAuthorBtn_Click);
             // 
             // AddAuthNameTB
             // 
@@ -367,6 +368,7 @@
             this.AddGenreBtn.TabIndex = 6;
             this.AddGenreBtn.Text = "Add Genre";
             this.AddGenreBtn.UseVisualStyleBackColor = true;
+            this.AddGenreBtn.Click += new System.EventHandler(this.AddGenreBtn_Click);
             // 
             // AddGenreTB
             // 
@@ -387,7 +389,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Goldenrod;
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.AddBookAuthorCombo);
             this.groupBox2.Controls.Add(this.GenreLB);
             this.groupBox2.Controls.Add(this.GenerateBtn);
             this.groupBox2.Controls.Add(this.AddBookBtn);
@@ -406,13 +408,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Book";
             // 
-            // comboBox1
+            // AddBookAuthorCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(116, 100);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(217, 21);
-            this.comboBox1.TabIndex = 29;
+            this.AddBookAuthorCombo.FormattingEnabled = true;
+            this.AddBookAuthorCombo.Location = new System.Drawing.Point(116, 100);
+            this.AddBookAuthorCombo.Name = "AddBookAuthorCombo";
+            this.AddBookAuthorCombo.Size = new System.Drawing.Size(217, 21);
+            this.AddBookAuthorCombo.TabIndex = 29;
             // 
             // GenreLB
             // 
@@ -496,6 +498,7 @@
             // PublishDatePicker
             // 
             this.PublishDatePicker.Location = new System.Drawing.Point(116, 149);
+            this.PublishDatePicker.MaxDate = new System.DateTime(2020, 8, 14, 0, 0, 0, 0);
             this.PublishDatePicker.Name = "PublishDatePicker";
             this.PublishDatePicker.Size = new System.Drawing.Size(217, 20);
             this.PublishDatePicker.TabIndex = 8;
@@ -831,7 +834,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox AddBookAuthorCombo;
         private System.Windows.Forms.Button ShowBtn;
         private System.Windows.Forms.Label ReturnBookNameLbl;
         private System.Windows.Forms.TextBox ReturnBookSNTB;

@@ -17,15 +17,15 @@ namespace LibraryManagmentSystem
 {
     public partial class Form1 : Form
     {
-        private int infoTransferBookId; // ***
-        private int infoTransferBorrowId; //**
+        private int infoTransferBookId = 0; // ***
+        private int infoTransferBorrowId = 0; //**
         private readonly LibraryDataContext context;
         public Form1()
         {
             context = new LibraryDataContext();
             InitializeComponent();
             BooksData();
-            //GetGenres();
+            GetGenres();
             AuthorsInCombo();
             CustommersInCombo();
         }
@@ -38,6 +38,71 @@ namespace LibraryManagmentSystem
             // fill Books ComboBox
             BooksInCombo(authorId);
         }
+
+        #region Helper Functions
+
+        // for Borrow Book Tab && Add Book Tab
+        private void AuthorsInCombo()
+        {
+            var authors = (from a in context.Authors
+                           select a);
+
+            AuthorCombo.DisplayMember = "FullName";
+            AuthorCombo.ValueMember = "Id";
+            AuthorCombo.DataSource = authors;
+
+            AddBookAuthorCombo.DisplayMember = "FullName";
+            AddBookAuthorCombo.ValueMember = "Id";
+            AddBookAuthorCombo.DataSource = authors;
+        }
+
+        // for Borrow Book Tab
+        private void BooksInCombo(int authorId)
+        {
+            var books = (from bk in context.Books
+                         where bk.Author == authorId && bk.IsActive == true
+                         select bk);
+
+            BooksCombo.DisplayMember = "BookTitle";
+            BooksCombo.ValueMember = "SerialNumber";
+            BooksCombo.DataSource = books;
+        }
+
+
+        // for Borrow Book Tab 
+        private void CustommersInCombo()
+        {
+            var cust = (from c in context.Custommers
+                        select new
+                        {
+                            FullName = $"{c.Name} {c.LastName}",
+                            c.PersonalNumber
+                        });
+
+            CustommerCombo.DisplayMember = "FullName";
+            CustommerCombo.ValueMember = "PersonalNumber";
+            CustommerCombo.DataSource = cust;
+
+        }
+
+        // for Add Book Tab
+        private void GetGenres()
+        {
+            var genres = (from g in context.Genres
+                          select g);
+
+            GenreLB.DisplayMember = "Genre1";
+            GenreLB.ValueMember = "Id";
+            GenreLB.DataSource = genres;
+
+            //foreach (var item in genres)
+            //{
+            //    GenreLB.Items.Add(item.Genre1);
+            //}
+        }
+
+        #endregion of Helper Functions
+
 
         #region Borrow Book Tab
 
@@ -76,14 +141,35 @@ namespace LibraryManagmentSystem
             var bookId = (from bk in context.Books
                           where bk.SerialNumber == bookSerialNo && bk.IsActive == true
                           select bk.Id).Single();
-            var custId = (from cust in context.Custommers
+            var customr = (from cust in context.Custommers
                           where cust.PersonalNumber == custPersonalNo
                           select new {
                                 cust.Id,
-                                FullName = $"{cust.Name} {cust.LastName}"
+                                FullName = $"{cust.Name} {cust.LastName}",
+                                cust.BirthDay
                           }).FirstOrDefault();
 
-
+            if ((DateTime.Today.Year - customr.BirthDay.Year) >= 16)
+            {
+                if ((DateTime.Today.Month - customr.BirthDay.Month) >= 0)
+                {
+                    if ((DateTime.Today.Day - customr.BirthDay.Day) < 0)
+                    {
+                        MessageBox.Show("16 წლის ჩათვლით არ გაიცემა წიგნები!");
+                        return;
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show("16 წლის ჩათვლით არ გაიცემა წიგნები!");
+                    return;
+                }
+            }
+            else 
+            {
+                MessageBox.Show("16 წლის ჩათვლით არ გაიცემა წიგნები!");
+                return;
+            }
 
             var returnDate = ReturnDateDTP.Value;
 
@@ -100,7 +186,7 @@ namespace LibraryManagmentSystem
 
             var borrow = new Borrow
             {
-                CustomerId = custId.Id,
+                CustomerId = customr.Id,
                 BookId = bookId,
                 ReturnDate = returnDate,
                 OrderDate = borrowDate,
@@ -115,7 +201,7 @@ namespace LibraryManagmentSystem
 
             context.SubmitChanges();
             BooksData();
-            MessageBox.Show($"წიგნი გაიტანა {custId.FullName}");
+            MessageBox.Show($"წიგნი გაიტანა {customr.FullName}");
         }
 
         // for Load Books Data in Combo box
@@ -179,9 +265,10 @@ namespace LibraryManagmentSystem
         {
             // serial number of book
             var serialNo = ReturnBookSNTB.Text;
-            if (serialNo == null) 
+            if (serialNo == null || ReturnBookSNTB.Text.Length != 13) 
             {
-                MessageBox.Show("გთხოვთ შეიყვანოთ წიგნის სერიული ნომერი!");
+                MessageBox.Show("გთხოვთ შეიყვანოთ წიგნის სერიული ნომერი! \n" +
+                    "რომელიც შედგება რიცხვებისაგან და მისი ზომა 13-ის ტოლია");
                 return;
             }
 
@@ -236,6 +323,12 @@ namespace LibraryManagmentSystem
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
+            if (infoTransferBookId == 0 || infoTransferBorrowId == 0) 
+            {
+                MessageBox.Show("არავალიდური ინფორმაცია");
+                return;
+            }
+
             var book = (from b in context.Books
                         where b.Id == infoTransferBookId
                         select b).FirstOrDefault();
@@ -270,68 +363,218 @@ namespace LibraryManagmentSystem
 
         }
 
-
-        #region Helper Functions For Borrow Book Tab
-
-        private void AuthorsInCombo() 
-        {
-            var authors = (from a in context.Authors
-                           select a);
-
-            AuthorCombo.DisplayMember = "FullName";
-            AuthorCombo.ValueMember = "Id";
-            AuthorCombo.DataSource = authors;
-        }
-
-        private void BooksInCombo(int authorId)
-        {
-            var books = (from bk in context.Books
-                         where bk.Author == authorId && bk.IsActive == true
-                         select bk);
-
-            BooksCombo.DisplayMember = "BookTitle";
-            BooksCombo.ValueMember = "SerialNumber";
-            BooksCombo.DataSource = books;
-        }
-
-        private void CustommersInCombo()
-        {
-            var cust = (from c in context.Custommers
-                        select new
-                        {
-                            FullName = $"{c.Name} {c.LastName}",
-                            c.PersonalNumber
-                        });
-
-            CustommerCombo.DisplayMember = "FullName";
-            CustommerCombo.ValueMember = "PersonalNumber";
-            CustommerCombo.DataSource = cust;
-
-        }
-        #endregion of Helper Functions
-
-
         #endregion of Borrow Book Tab
 
 
 
+        #region Add Book Tab
 
+        private void AddBookBtn_Click(object sender, EventArgs e)
+        {
+
+            // Valdation Check
+
+            if (BookTitleTB.Text == "") 
+            {
+                MessageBox.Show("მიუთითოთ წიგნის სათაური");
+                return;
+            }
+
+
+            if (PublishDatePicker.Value.Date == DateTime.Today) 
+            {
+                MessageBox.Show("შანსი არაა :)");
+                return;
+            }
+
+            if (SerialNoTB.Text == "" || SerialNoTB.Text.Length != 13) 
+            {
+                MessageBox.Show("შეიყვანეთ წიგნის სერიული ნომერი \n" +
+                    "მისი სიგრძე არის 13-ის ტოლი");
+                return;
+            }
+
+
+            var bookMatch = (from bm in context.Books
+                             where bm.SerialNumber == SerialNoTB.Text
+                             select bm).FirstOrDefault();
+            if (bookMatch != null) 
+            {
+                MessageBox.Show("წიგნი მსგავსი სერიული ნომრით უკვე არსებობს!");
+                return;
+            }
+
+            if (GenreLB.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("გთხოვთ აირჩიეთ ჟანრი");
+                return;
+            }
+
+            // adding data in Books Table
+            var genres = new List<string>();
+
+            foreach (Genre item in GenreLB.SelectedItems)
+            {
+                genres.Add(item.Genre1);
+            }
+
+            var book = new BookVM
+            {
+                BookTitle = BookTitleTB.Text,
+                Author = (int)AddBookAuthorCombo.SelectedValue,
+                PublishDate = PublishDatePicker.Value,
+                SerialNumber = SerialNoTB.Text,
+                Genres = genres,
+                IsActive = true
+                
+            };
+
+
+              var bok = new Book
+                {
+                    BookTitle = book.BookTitle,
+                    Author = book.Author,
+                    PublicationDate = book.PublishDate,
+                    SerialNumber = book.SerialNumber,
+                    IsActive = book.IsActive
+                    
+                };
+
+                context.Books.InsertOnSubmit(bok);
+                context.SubmitChanges();
+
+                // adding data in GenresOfBooks
+
+                var bookId = (from id in context.Books
+                              where id.SerialNumber == book.SerialNumber
+                              select id.Id).FirstOrDefault();
+
+                var genreIds = new List<int>();
+
+                foreach (var item in book.Genres)
+                {
+                    var Ids = (from gid in context.Genres
+                               where gid.Genre1 == item
+                               select gid.Id).FirstOrDefault();
+                    genreIds.Add(Ids);
+                }
+
+
+                foreach (var item in genreIds)
+                {
+                    var bookGenres = new GenresOfBook
+                    {
+                        BookId = bookId,
+                        GenreId = item
+                    };
+                    context.GenresOfBooks.InsertOnSubmit(bookGenres);
+                }
+                context.SubmitChanges();
+
+
+                BookTitleTB.Clear();
+                GenreLB.ClearSelected();
+                SerialNoTB.Clear();
+
+                BooksData();
+
+                MessageBox.Show("წიგნი დაემატა წარმატებით");
+            
+        }
+
+        private void GenerateBtn_Click(object sender, EventArgs e)
+        {
+            var chars = "0123456789";
+            var stringChars = new char[13];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            SerialNoTB.Text = finalString;
+        }
+
+        private void AddGenreBtn_Click(object sender, EventArgs e)
+        {
+            if (AddGenreTB.Text == "") 
+            {
+                MessageBox.Show("შეავსეთ ჟანრების ველი!");
+                return;
+            }
+
+            var genreName = AddGenreTB.Text;
+
+            var genreMatch = (from gm in context.Genres
+                              where gm.Genre1 == genreName
+                              select gm).FirstOrDefault();
+            if (genreMatch != null) 
+            {
+                MessageBox.Show("მსგავსი ჟანრი უკვე ბაზაშია");
+            }
+
+            var genres = new Genre
+            {
+                Genre1 = genreName
+            };
+
+            context.Genres.InsertOnSubmit(genres);
+            context.SubmitChanges();
+
+            MessageBox.Show("ჟანრი წარატებით დაემატა");
+            AddGenreTB.Clear();
+            GetGenres();
+            
+
+        }
+
+        private void AddAuthorBtn_Click(object sender, EventArgs e)
+        {
+            if (AddAuthNameTB.Text == "")
+            {
+                MessageBox.Show("შეავსეთ სახელის ველი!");
+                return;
+            }
+
+            if (AddAuthLastNameTB.Text == "")
+            {
+                MessageBox.Show("შეავსეთ გვარის ველი!");
+                return;
+            }
+
+            var fullName = $"{AddAuthNameTB.Text} {AddAuthLastNameTB.Text}";
+
+            var authorMatch = (from am in context.Authors
+                               where am.FullName == fullName
+                               select am).FirstOrDefault();
+
+            if (authorMatch != null) 
+            {
+                MessageBox.Show("ასეთი ავტორი უკვე ბაზაშია");
+                return;
+            }
+
+            var authors = new Author
+            {
+                FullName = fullName
+            };
+
+            context.Authors.InsertOnSubmit(authors);
+            context.SubmitChanges();
+
+            MessageBox.Show("ავტორი წარმატებით დაემატა");
+            AuthorsInCombo();
+            AddAuthNameTB.Clear();
+            AddAuthLastNameTB.Clear();
+        }
+
+        #endregion of Add Book Tab
 
         #region Registration Tab
-        //private void GetGenres()
-        //{
-        //    var genres = (from g in context.Genres
-        //                  select g);
 
-        //    //GenreLB.DisplayMember = "Genre1";
-        //    //GenreLB.ValueMember = "Id";
-        //    //GenreLB.DataSource = genres;
-
-        //    foreach (var item in genres)
-        //    {
-        //        GenreLB.Items.Add(item.Genre1);
-        //    }
-        //}
         private void AddCustommerBtn_Click(object sender, EventArgs e)
         {
             ////აქ CustommerVM მაგივრად შემეძლო შემოტანილი მნიშვნელობები პირდაპირ Custommer
@@ -378,91 +621,14 @@ namespace LibraryManagmentSystem
 
             //MessageBox.Show("მომხმარებელი დაემატა წარმატებით");
         }
-        private void AddBookBtn_Click(object sender, EventArgs e)
-        {
-            //var genres = new List<string>();
-
-            //foreach (var item in GenreLB.SelectedItems)
-            //{
-            //    genres.Add(item.ToString());
-            //}
-
-            //var book = new BookVM
-            //{
-            //    BookTitle = BookTitleTB.Text,
-            //    Author = AuthorTB.Text,
-            //    PublishDate = PublishDatePicker.Value,
-            //    SerialNumber = SerialNoTB.Text,
-            //    Genres = genres
-            //};
-
-            //var ifExist = (from bk in context.Books
-            //               where bk.SerialNumber == book.SerialNumber
-            //               select bk).FirstOrDefault();
-
-            //if (ifExist == null)
-            //{
-            //    var bk = new Book
-            //    {
-            //        BookTitle = book.BookTitle,
-            //        Author = book.Author,
-            //        PublicationDate = book.PublishDate,
-            //        SerialNumber = book.SerialNumber
-            //    };
-
-            //    context.Books.InsertOnSubmit(bk);
-            //    context.SubmitChanges();
-
-            //    // adding data in GenresOfBooks
-
-            //    var bookId = (from id in context.Books
-            //                  where id.SerialNumber == book.SerialNumber
-            //                  select id.Id).FirstOrDefault();
-
-            //    var genreIds = new List<int>();
-
-            //    foreach (var item in book.Genres)
-            //    {
-            //        var Ids = (from gid in context.Genres
-            //                   where gid.Genre1 == item
-            //                   select gid.Id).FirstOrDefault();
-            //        genreIds.Add(Ids);
-            //    }
 
 
-            //    foreach (var item in genreIds)
-            //    {
-            //        var bookGenres = new GenresOfBook
-            //        {
-            //            BookId = bookId,
-            //            GenreId = item
-            //        };
-            //        context.GenresOfBooks.InsertOnSubmit(bookGenres);
-            //    }
-            //    context.SubmitChanges();
 
 
-            //    BookTitleTB.Clear();
-            //    AuthorTB.Clear();
-            //    GenreLB.ClearSelected();
-            //    SerialNoTB.Clear();
 
-            //    MessageBox.Show("წიგნი დაემატა წარმატებით");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("ასეთი წიგნი უკვე რეგისტრირებულია");
-            //}
-        }
 
         #endregion
 
-        private void GenerateBtn_Click(object sender, EventArgs e)
-        {
-            BarCode serial = new BarCode();
-            byte[] barcodeInBytes = serial.generateBarcodeToByteArray();
-        }
-
-        
+       
     }
 }
