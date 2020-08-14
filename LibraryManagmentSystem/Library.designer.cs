@@ -197,7 +197,7 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book", Storage="_Books", ThisKey="Id", OtherKey="Author")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book", Storage="_Books", ThisKey="Id", OtherKey="AuthorId")]
 		public EntitySet<Book> Books
 		{
 			get
@@ -233,13 +233,13 @@ namespace LibraryManagmentSystem
 		private void attach_Books(Book entity)
 		{
 			this.SendPropertyChanging();
-			entity.Author1 = this;
+			entity.Author = this;
 		}
 		
 		private void detach_Books(Book entity)
 		{
 			this.SendPropertyChanging();
-			entity.Author1 = null;
+			entity.Author = null;
 		}
 	}
 	
@@ -346,7 +346,7 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_GenresOfBook", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_GenresOfBook", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Book Book
 		{
 			get
@@ -380,7 +380,7 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genre_GenresOfBook", Storage="_Genre", ThisKey="GenreId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genre_GenresOfBook", Storage="_Genre", ThisKey="GenreId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Genre Genre
 		{
 			get
@@ -447,7 +447,7 @@ namespace LibraryManagmentSystem
 		
 		private string _BookTitle;
 		
-		private System.Nullable<int> _Author;
+		private System.Nullable<int> _AuthorId;
 		
 		private System.DateTime _PublicationDate;
 		
@@ -457,7 +457,7 @@ namespace LibraryManagmentSystem
 		
 		private EntitySet<Borrow> _Borrows;
 		
-		private EntityRef<Author> _Author1;
+		private EntityRef<Author> _Author;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -469,8 +469,8 @@ namespace LibraryManagmentSystem
     partial void OnSerialNumberChanged();
     partial void OnBookTitleChanging(string value);
     partial void OnBookTitleChanged();
-    partial void OnAuthorChanging(System.Nullable<int> value);
-    partial void OnAuthorChanged();
+    partial void OnAuthorIdChanging(System.Nullable<int> value);
+    partial void OnAuthorIdChanged();
     partial void OnPublicationDateChanging(System.DateTime value);
     partial void OnPublicationDateChanged();
     partial void OnIsActiveChanging(bool value);
@@ -481,7 +481,7 @@ namespace LibraryManagmentSystem
 		{
 			this._GenresOfBooks = new EntitySet<GenresOfBook>(new Action<GenresOfBook>(this.attach_GenresOfBooks), new Action<GenresOfBook>(this.detach_GenresOfBooks));
 			this._Borrows = new EntitySet<Borrow>(new Action<Borrow>(this.attach_Borrows), new Action<Borrow>(this.detach_Borrows));
-			this._Author1 = default(EntityRef<Author>);
+			this._Author = default(EntityRef<Author>);
 			OnCreated();
 		}
 		
@@ -545,26 +545,26 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="Int")]
-		public System.Nullable<int> Author
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AuthorId", DbType="Int")]
+		public System.Nullable<int> AuthorId
 		{
 			get
 			{
-				return this._Author;
+				return this._AuthorId;
 			}
 			set
 			{
-				if ((this._Author != value))
+				if ((this._AuthorId != value))
 				{
-					if (this._Author1.HasLoadedOrAssignedValue)
+					if (this._Author.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnAuthorChanging(value);
+					this.OnAuthorIdChanging(value);
 					this.SendPropertyChanging();
-					this._Author = value;
-					this.SendPropertyChanged("Author");
-					this.OnAuthorChanged();
+					this._AuthorId = value;
+					this.SendPropertyChanged("AuthorId");
+					this.OnAuthorIdChanged();
 				}
 			}
 		}
@@ -635,36 +635,36 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book", Storage="_Author1", ThisKey="Author", OtherKey="Id", IsForeignKey=true)]
-		public Author Author1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book", Storage="_Author", ThisKey="AuthorId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Author Author
 		{
 			get
 			{
-				return this._Author1.Entity;
+				return this._Author.Entity;
 			}
 			set
 			{
-				Author previousValue = this._Author1.Entity;
+				Author previousValue = this._Author.Entity;
 				if (((previousValue != value) 
-							|| (this._Author1.HasLoadedOrAssignedValue == false)))
+							|| (this._Author.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Author1.Entity = null;
+						this._Author.Entity = null;
 						previousValue.Books.Remove(this);
 					}
-					this._Author1.Entity = value;
+					this._Author.Entity = value;
 					if ((value != null))
 					{
 						value.Books.Add(this);
-						this._Author = value.Id;
+						this._AuthorId = value.Id;
 					}
 					else
 					{
-						this._Author = default(Nullable<int>);
+						this._AuthorId = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Author1");
+					this.SendPropertyChanged("Author");
 				}
 			}
 		}
@@ -889,7 +889,7 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Borrow", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Borrow", Storage="_Book", ThisKey="BookId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Book Book
 		{
 			get
@@ -923,7 +923,7 @@ namespace LibraryManagmentSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Custommer_Borrow", Storage="_Custommer", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Custommer_Borrow", Storage="_Custommer", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Custommer Custommer
 		{
 			get

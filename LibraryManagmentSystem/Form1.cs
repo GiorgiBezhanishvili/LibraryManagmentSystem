@@ -19,6 +19,11 @@ namespace LibraryManagmentSystem
     {
         private int infoTransferBookId = 0; // ***
         private int infoTransferBorrowId = 0; //**
+        private int infoTransferCustommerId = 0; //**
+        private int infoTransferGenreId = 0; //**
+        private int infoTransferAuthorId = 0; //**
+        //private int infoTransferDeleteBookId = 0; //**
+
         private readonly LibraryDataContext context;
         public Form1()
         {
@@ -62,7 +67,7 @@ namespace LibraryManagmentSystem
         private void BooksInCombo(int authorId)
         {
             var books = (from bk in context.Books
-                         where bk.Author == authorId && bk.IsActive == true
+                         where bk.AuthorId == authorId && bk.IsActive == true
                          select bk);
 
             BooksCombo.DisplayMember = "BookTitle";
@@ -222,7 +227,7 @@ namespace LibraryManagmentSystem
         {
             var Books = (
                 from book in context.Books
-                join author in context.Authors on book.Author equals author.Id
+                join author in context.Authors on book.AuthorId equals author.Id
                 orderby book.BookTitle ascending
                 select new BookDTO
                 {
@@ -268,7 +273,7 @@ namespace LibraryManagmentSystem
         {
             // serial number of book
             var serialNo = ReturnBookSNTB.Text;
-            if (serialNo == null || ReturnBookSNTB.Text.Length != 13) 
+            if (serialNo == "" || ReturnBookSNTB.Text.Length != 13) 
             {
                 MessageBox.Show("გთხოვთ შეიყვანოთ წიგნის სერიული ნომერი! \n" +
                     "რომელიც შედგება რიცხვებისაგან და მისი ზომა 13-ის ტოლია");
@@ -364,7 +369,8 @@ namespace LibraryManagmentSystem
             GetReportData();
             ReturnBookSNTB.Clear();
             ReturnBookNameLbl.ResetText();
-
+            infoTransferBookId = 0;
+            infoTransferBorrowId = 0;
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -442,10 +448,10 @@ namespace LibraryManagmentSystem
             };
 
 
-              var bok = new Book
-                {
-                    BookTitle = book.BookTitle,
-                    Author = book.Author,
+            var bok = new Book
+            {
+                BookTitle = book.BookTitle,
+                AuthorId = book.Author,
                     PublicationDate = book.PublishDate,
                     SerialNumber = book.SerialNumber,
                     IsActive = book.IsActive
@@ -718,8 +724,268 @@ namespace LibraryManagmentSystem
         }
 
 
+
         #endregion of Report Tab
 
-        
+        #region Delete Data
+
+        // Delete Custommer
+        private void FindCustDeleteBtn_Click(object sender, EventArgs e)
+        {
+            var personalNo = FindCustDeleteTB.Text;
+            if (personalNo == "" || FindCustDeleteTB.Text.Length != 11)
+            {
+                MessageBox.Show("გთხოვთ შეიყვანოთ მომხმარებლის პირადი ნომერი! \n" +
+                    "რომელიც შედგება რიცხვებისაგან და მისი ზომა 11-ის ტოლია");
+                return;
+            }
+
+            var thatCustommer = (from cust in context.Custommers
+                                 where cust.PersonalNumber == personalNo
+                                 select cust).FirstOrDefault();
+
+            if (thatCustommer != null)
+            {
+                FindCustDataLbl.Text = $"{thatCustommer.Name} {thatCustommer.LastName}";
+                infoTransferCustommerId = thatCustommer.Id;
+            }
+            else 
+            {
+                MessageBox.Show("ასეთი მომხმარებელი არ არსებობს!");
+            }
+        }
+
+
+        private void DeleteCustBtn_Click(object sender, EventArgs e)
+        {
+
+            if (infoTransferCustommerId == 0)
+            {
+                MessageBox.Show("არავალიდური ინფორმაცია");
+                return;
+            }
+
+            var custommer = (from cu in context.Custommers
+                             where cu.Id == infoTransferCustommerId
+                             select cu).FirstOrDefault();
+
+            context.Custommers.DeleteOnSubmit(custommer);
+            context.SubmitChanges();
+
+            infoTransferCustommerId = 0;
+            CustommersInCombo();
+            GetCustommersData();
+            GetReportData();
+            MessageBox.Show("მომხმარებელი წარმატებით წაიშალა!");
+
+        }
+
+        private void ResetCustDataBtn_Click(object sender, EventArgs e)
+        {
+            FindCustDeleteTB.Clear();
+            FindCustDataLbl.Text = "";
+            infoTransferCustommerId = 0;
+        }
+
+
+
+
+        // Delete Genre
+
+        private void ExistBtn_Click(object sender, EventArgs e)
+        {
+            var genreName = GenreTB.Text;
+            if (genreName == "")
+            {
+                MessageBox.Show("გთხოვთ შეიყვანოთ ჟანრის დასახელება");
+                return;
+            }
+
+            var thatGenre = (from g in context.Genres
+                             where g.Genre1.ToLower() == genreName.ToLower()
+                             select g).FirstOrDefault();
+
+            if (thatGenre != null)
+            {
+                label23.Text = $"Exist";
+                infoTransferGenreId = thatGenre.Id;
+            }
+            else
+            {
+                MessageBox.Show("ასეთი ჟანრი არ არის ბაზაში!");
+            }
+
+        }
+
+        private void GenreDeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (infoTransferGenreId == 0)
+            {
+                MessageBox.Show("არავალიდური ინფორმაცია");
+                return;
+            }
+
+            var genres = (from gg in context.Genres
+                          where gg.Id == infoTransferGenreId
+                          select gg).FirstOrDefault();
+
+            context.Genres.DeleteOnSubmit(genres);
+            context.SubmitChanges();
+
+            infoTransferGenreId = 0;
+            BooksData();
+            GetGenres();
+            AuthorsInCombo();
+            CustommersInCombo();
+            GetCustommersData();
+            GetReportData();
+
+            MessageBox.Show("ჟანრი წარმატებით წაიშალა!");
+        }
+
+        private void GenreResetBtn_Click(object sender, EventArgs e)
+        {
+            GenreTB.Clear();
+            label23.Text = "";
+            infoTransferGenreId = 0;
+        }
+
+
+
+        // Delete Author
+
+        private void ExistAuthorBtn_Click(object sender, EventArgs e)
+        {
+            var authorName = AuthorDelTB.Text;
+            if (authorName == "")
+            {
+                MessageBox.Show("გთხოვთ შეიყვანოთ ავტორის სახელი");
+                return;
+            }
+
+            var thatAuthor = (from au in context.Authors
+                              where au.FullName.ToLower() == authorName.ToLower()
+                              select au).FirstOrDefault();
+
+            if (thatAuthor != null)
+            {
+                label26.Text = $"Exist";
+                infoTransferAuthorId = thatAuthor.Id;
+            }
+            else
+            {
+                MessageBox.Show("ასეთი ავტორი არ არის ბაზაში!");
+            }
+        }
+
+
+        private void DeleteAuthorBtn_Click(object sender, EventArgs e)
+        {
+            if (infoTransferAuthorId == 0)
+            {
+                MessageBox.Show("არავალიდური ინფორმაცია");
+                return;
+            }
+
+            var author = (from auu in context.Authors
+                          where auu.Id == infoTransferAuthorId
+                          select auu).FirstOrDefault();
+
+            context.Authors.DeleteOnSubmit(author);
+            context.SubmitChanges();
+
+            infoTransferAuthorId = 0;
+            BooksData();
+            GetGenres();
+            AuthorsInCombo();
+            CustommersInCombo();
+            GetCustommersData();
+            GetReportData();
+
+            MessageBox.Show("ავტორი წარმატებით წაიშალა ბაზიდან");
+        }
+
+        private void ResetAuthorDataBtn_Click(object sender, EventArgs e)
+        {
+            AuthorDelTB.Clear();
+            label26.Text = "";
+            infoTransferAuthorId = 0;
+        }
+
+
+        // Delete Book 
+
+        private void FindBookDeleteBtn_Click(object sender, EventArgs e)
+        {
+            var serialNo = BookDeleteTB.Text;
+            if (serialNo == "" || serialNo.Length != 13)
+            {
+                MessageBox.Show("გთხოვთ შეიყვანოთ წიგნის სერიული ნომერი \n" +
+                    "გაითვალისწინეთ სერიული ნომერი შედგება 13 რიცხვისაგან");
+                return;
+            }
+
+            var thatBook = (from bk in context.Books
+                            where bk.SerialNumber == serialNo
+                            select bk).FirstOrDefault();
+
+            if (thatBook != null)
+            {
+                label29.Text = $"{thatBook.BookTitle}";
+                infoTransferBookId = thatBook.Id;
+            }
+            else
+            {
+                MessageBox.Show("ასეთი წიგნი მსგავსი სერიული ნომრით არ არის ბაზაში!");
+            }
+
+        }
+
+        private void DeleteBookBtn_Click(object sender, EventArgs e)
+        {
+
+            if (infoTransferBookId == 0)
+            {
+                MessageBox.Show("არავალიდური ინფორმაცია");
+                return;
+            }
+
+            var book = (from b in context.Books
+                        where b.Id == infoTransferBookId
+                        select b).FirstOrDefault();
+
+            if (!book.IsActive) 
+            {
+                MessageBox.Show("წიგნი ბაზიდან მას შემდეგ წაიშლება \n " +
+                    "როცა დაბრუნდება ის ბიბლიოთეკაში!");
+                return;
+            }
+
+            context.Books.DeleteOnSubmit(book);
+            context.SubmitChanges();
+
+            infoTransferBookId = 0;
+            BooksData();
+            GetGenres();
+            AuthorsInCombo();
+            CustommersInCombo();
+            GetCustommersData();
+            GetReportData();
+
+            MessageBox.Show("წიგნი წარმატებით წაიშალა ბაზიდან");
+
+        }
+
+
+        private void ResetBookBTN_Click(object sender, EventArgs e)
+        {
+            BookDeleteTB.Clear();
+            label29.Text = "";
+            infoTransferBookId = 0;
+        }
+
+        #endregion of Delete Data
+
+
     }
 }

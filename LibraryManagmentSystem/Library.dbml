@@ -4,7 +4,7 @@
     <Type Name="Author">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FullName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Association Name="Author_Book" Member="Books" ThisKey="Id" OtherKey="Author" Type="Book" />
+      <Association Name="Author_Book" Member="Books" ThisKey="Id" OtherKey="AuthorId" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.GenresOfBooks" Member="GenresOfBooks">
@@ -12,8 +12,8 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="BookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="GenreId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Book_GenresOfBook" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
-      <Association Name="Genre_GenresOfBook" Member="Genre" ThisKey="GenreId" OtherKey="Id" Type="Genre" IsForeignKey="true" />
+      <Association Name="Book_GenresOfBook" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Genre_GenresOfBook" Member="Genre" ThisKey="GenreId" OtherKey="Id" Type="Genre" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Books" Member="Books">
@@ -21,12 +21,12 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="SerialNumber" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
       <Column Name="BookTitle" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Author" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuthorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PublicationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Book_GenresOfBook" Member="GenresOfBooks" ThisKey="Id" OtherKey="BookId" Type="GenresOfBook" />
       <Association Name="Book_Borrow" Member="Borrows" ThisKey="Id" OtherKey="BookId" Type="Borrow" />
-      <Association Name="Author_Book" Member="Author1" ThisKey="Author" OtherKey="Id" Type="Author" IsForeignKey="true" />
+      <Association Name="Author_Book" Member="Author" ThisKey="AuthorId" OtherKey="Id" Type="Author" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.Borrows" Member="Borrows">
@@ -37,8 +37,8 @@
       <Column Name="OrderDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="ReturnDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="ActualReturnDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="Book_Borrow" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
-      <Association Name="Custommer_Borrow" Member="Custommer" ThisKey="CustomerId" OtherKey="Id" Type="Custommer" IsForeignKey="true" />
+      <Association Name="Book_Borrow" Member="Book" ThisKey="BookId" OtherKey="Id" Type="Book" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Custommer_Borrow" Member="Custommer" ThisKey="CustomerId" OtherKey="Id" Type="Custommer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Custommers" Member="Custommers">

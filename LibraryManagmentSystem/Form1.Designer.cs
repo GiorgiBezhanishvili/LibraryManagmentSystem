@@ -31,9 +31,15 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.BookBorrowTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ResetBtn = new System.Windows.Forms.Button();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ReturnBookNameLbl = new System.Windows.Forms.Label();
+            this.ReturnBookSNTB = new System.Windows.Forms.TextBox();
             this.ReturnBtn = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ShowBtn = new System.Windows.Forms.Button();
             this.AuthorCombo = new System.Windows.Forms.ComboBox();
             this.AuthorLBL = new System.Windows.Forms.Label();
             this.BooksCombo = new System.Windows.Forms.ComboBox();
@@ -87,12 +93,39 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
             this.ReportDGV = new System.Windows.Forms.DataGridView();
-            this.ShowBtn = new System.Windows.Forms.Button();
-            this.ReturnBookSNTB = new System.Windows.Forms.TextBox();
-            this.ReturnBookNameLbl = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.ResetBtn = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.ResetCustDataBtn = new System.Windows.Forms.Button();
+            this.FindCustDeleteBtn = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.FindCustDataLbl = new System.Windows.Forms.Label();
+            this.FindCustDeleteTB = new System.Windows.Forms.TextBox();
+            this.DeleteCustBtn = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.GenreResetBtn = new System.Windows.Forms.Button();
+            this.ExistBtn = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.GenreTB = new System.Windows.Forms.TextBox();
+            this.GenreDeleteBtn = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ResetAuthorDataBtn = new System.Windows.Forms.Button();
+            this.ExistAuthorBtn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.AuthorDelTB = new System.Windows.Forms.TextBox();
+            this.DeleteAuthorBtn = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.ResetBookBTN = new System.Windows.Forms.Button();
+            this.FindBookDeleteBtn = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.BookDeleteTB = new System.Windows.Forms.TextBox();
+            this.DeleteBookBtn = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.BookBorrowTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -107,6 +140,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReportDGV)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -115,6 +153,7 @@
             this.tabControl.Controls.Add(this.AddBookTab);
             this.tabControl.Controls.Add(this.AddCustommerTab);
             this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -150,6 +189,52 @@
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Return Book";
+            // 
+            // ResetBtn
+            // 
+            this.ResetBtn.Location = new System.Drawing.Point(185, 118);
+            this.ResetBtn.Name = "ResetBtn";
+            this.ResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.ResetBtn.TabIndex = 16;
+            this.ResetBtn.Text = "Reset";
+            this.ResetBtn.UseVisualStyleBackColor = true;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(286, 50);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(55, 21);
+            this.SearchBtn.TabIndex = 15;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(88, 26);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(172, 13);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "Write Down Serial Number of Book";
+            // 
+            // ReturnBookNameLbl
+            // 
+            this.ReturnBookNameLbl.AutoSize = true;
+            this.ReturnBookNameLbl.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReturnBookNameLbl.ForeColor = System.Drawing.Color.Indigo;
+            this.ReturnBookNameLbl.Location = new System.Drawing.Point(99, 90);
+            this.ReturnBookNameLbl.Name = "ReturnBookNameLbl";
+            this.ReturnBookNameLbl.Size = new System.Drawing.Size(0, 16);
+            this.ReturnBookNameLbl.TabIndex = 10;
+            // 
+            // ReturnBookSNTB
+            // 
+            this.ReturnBookSNTB.Location = new System.Drawing.Point(79, 51);
+            this.ReturnBookSNTB.Name = "ReturnBookSNTB";
+            this.ReturnBookSNTB.Size = new System.Drawing.Size(200, 20);
+            this.ReturnBookSNTB.TabIndex = 9;
             // 
             // ReturnBtn
             // 
@@ -189,6 +274,16 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Borrow Book";
+            // 
+            // ShowBtn
+            // 
+            this.ShowBtn.Location = new System.Drawing.Point(286, 34);
+            this.ShowBtn.Name = "ShowBtn";
+            this.ShowBtn.Size = new System.Drawing.Size(55, 21);
+            this.ShowBtn.TabIndex = 14;
+            this.ShowBtn.Text = "Show";
+            this.ShowBtn.UseVisualStyleBackColor = true;
+            this.ShowBtn.Click += new System.EventHandler(this.ShowBtn_Click);
             // 
             // AuthorCombo
             // 
@@ -506,6 +601,7 @@
             this.PublishDatePicker.Name = "PublishDatePicker";
             this.PublishDatePicker.Size = new System.Drawing.Size(217, 20);
             this.PublishDatePicker.TabIndex = 8;
+            this.PublishDatePicker.Value = new System.DateTime(2020, 8, 14, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -606,6 +702,7 @@
             this.BirthdayDatePicker.Name = "BirthdayDatePicker";
             this.BirthdayDatePicker.Size = new System.Drawing.Size(200, 20);
             this.BirthdayDatePicker.TabIndex = 33;
+            this.BirthdayDatePicker.Value = new System.DateTime(2020, 8, 14, 6, 55, 37, 0);
             // 
             // label8
             // 
@@ -701,61 +798,347 @@
             this.ReportDGV.Size = new System.Drawing.Size(783, 355);
             this.ReportDGV.TabIndex = 0;
             // 
-            // ShowBtn
+            // tabPage2
             // 
-            this.ShowBtn.Location = new System.Drawing.Point(286, 34);
-            this.ShowBtn.Name = "ShowBtn";
-            this.ShowBtn.Size = new System.Drawing.Size(55, 21);
-            this.ShowBtn.TabIndex = 14;
-            this.ShowBtn.Text = "Show";
-            this.ShowBtn.UseVisualStyleBackColor = true;
-            this.ShowBtn.Click += new System.EventHandler(this.ShowBtn_Click);
+            this.tabPage2.BackColor = System.Drawing.Color.Red;
+            this.tabPage2.Controls.Add(this.groupBox9);
+            this.tabPage2.Controls.Add(this.groupBox8);
+            this.tabPage2.Controls.Add(this.groupBox10);
+            this.tabPage2.Controls.Add(this.groupBox7);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(795, 427);
+            this.tabPage2.TabIndex = 5;
+            this.tabPage2.Text = "Delete Data";
             // 
-            // ReturnBookSNTB
+            // groupBox7
             // 
-            this.ReturnBookSNTB.Location = new System.Drawing.Point(79, 51);
-            this.ReturnBookSNTB.Name = "ReturnBookSNTB";
-            this.ReturnBookSNTB.Size = new System.Drawing.Size(200, 20);
-            this.ReturnBookSNTB.TabIndex = 9;
+            this.groupBox7.BackColor = System.Drawing.Color.Silver;
+            this.groupBox7.Controls.Add(this.ResetCustDataBtn);
+            this.groupBox7.Controls.Add(this.FindCustDeleteBtn);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.FindCustDataLbl);
+            this.groupBox7.Controls.Add(this.FindCustDeleteTB);
+            this.groupBox7.Controls.Add(this.DeleteCustBtn);
+            this.groupBox7.Controls.Add(this.label22);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(390, 210);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Delete Custommer";
             // 
-            // ReturnBookNameLbl
+            // groupBox8
             // 
-            this.ReturnBookNameLbl.AutoSize = true;
-            this.ReturnBookNameLbl.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReturnBookNameLbl.ForeColor = System.Drawing.Color.Indigo;
-            this.ReturnBookNameLbl.Location = new System.Drawing.Point(99, 90);
-            this.ReturnBookNameLbl.Name = "ReturnBookNameLbl";
-            this.ReturnBookNameLbl.Size = new System.Drawing.Size(0, 16);
-            this.ReturnBookNameLbl.TabIndex = 10;
+            this.groupBox8.BackColor = System.Drawing.Color.Silver;
+            this.groupBox8.Controls.Add(this.ResetBookBTN);
+            this.groupBox8.Controls.Add(this.FindBookDeleteBtn);
+            this.groupBox8.Controls.Add(this.label28);
+            this.groupBox8.Controls.Add(this.label29);
+            this.groupBox8.Controls.Add(this.BookDeleteTB);
+            this.groupBox8.Controls.Add(this.DeleteBookBtn);
+            this.groupBox8.Controls.Add(this.label30);
+            this.groupBox8.Location = new System.Drawing.Point(402, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(390, 210);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Delete Book";
             // 
-            // label19
+            // groupBox9
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(88, 26);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(172, 13);
-            this.label19.TabIndex = 11;
-            this.label19.Text = "Write Down Serial Number of Book";
+            this.groupBox9.BackColor = System.Drawing.Color.Silver;
+            this.groupBox9.Controls.Add(this.ResetAuthorDataBtn);
+            this.groupBox9.Controls.Add(this.ExistAuthorBtn);
+            this.groupBox9.Controls.Add(this.label25);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.AuthorDelTB);
+            this.groupBox9.Controls.Add(this.DeleteAuthorBtn);
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Location = new System.Drawing.Point(402, 222);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(390, 202);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Delete Author";
             // 
-            // SearchBtn
+            // groupBox10
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(286, 50);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(55, 21);
-            this.SearchBtn.TabIndex = 15;
-            this.SearchBtn.Text = "Search";
-            this.SearchBtn.UseVisualStyleBackColor = true;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            this.groupBox10.BackColor = System.Drawing.Color.Silver;
+            this.groupBox10.Controls.Add(this.GenreResetBtn);
+            this.groupBox10.Controls.Add(this.ExistBtn);
+            this.groupBox10.Controls.Add(this.label21);
+            this.groupBox10.Controls.Add(this.label23);
+            this.groupBox10.Controls.Add(this.GenreTB);
+            this.groupBox10.Controls.Add(this.GenreDeleteBtn);
+            this.groupBox10.Controls.Add(this.label24);
+            this.groupBox10.Location = new System.Drawing.Point(6, 222);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(390, 202);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Delete Genre";
             // 
-            // ResetBtn
+            // ResetCustDataBtn
             // 
-            this.ResetBtn.Location = new System.Drawing.Point(185, 118);
-            this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(75, 23);
-            this.ResetBtn.TabIndex = 16;
-            this.ResetBtn.Text = "Reset";
-            this.ResetBtn.UseVisualStyleBackColor = true;
-            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            this.ResetCustDataBtn.Location = new System.Drawing.Point(209, 140);
+            this.ResetCustDataBtn.Name = "ResetCustDataBtn";
+            this.ResetCustDataBtn.Size = new System.Drawing.Size(75, 23);
+            this.ResetCustDataBtn.TabIndex = 23;
+            this.ResetCustDataBtn.Text = "Reset";
+            this.ResetCustDataBtn.UseVisualStyleBackColor = true;
+            this.ResetCustDataBtn.Click += new System.EventHandler(this.ResetCustDataBtn_Click);
+            // 
+            // FindCustDeleteBtn
+            // 
+            this.FindCustDeleteBtn.Location = new System.Drawing.Point(310, 72);
+            this.FindCustDeleteBtn.Name = "FindCustDeleteBtn";
+            this.FindCustDeleteBtn.Size = new System.Drawing.Size(55, 21);
+            this.FindCustDeleteBtn.TabIndex = 22;
+            this.FindCustDeleteBtn.Text = "Find";
+            this.FindCustDeleteBtn.UseVisualStyleBackColor = true;
+            this.FindCustDeleteBtn.Click += new System.EventHandler(this.FindCustDeleteBtn_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(112, 48);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(195, 13);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Write Down Personal Number of Person";
+            // 
+            // FindCustDataLbl
+            // 
+            this.FindCustDataLbl.AutoSize = true;
+            this.FindCustDataLbl.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindCustDataLbl.ForeColor = System.Drawing.Color.Indigo;
+            this.FindCustDataLbl.Location = new System.Drawing.Point(123, 112);
+            this.FindCustDataLbl.Name = "FindCustDataLbl";
+            this.FindCustDataLbl.Size = new System.Drawing.Size(0, 16);
+            this.FindCustDataLbl.TabIndex = 20;
+            // 
+            // FindCustDeleteTB
+            // 
+            this.FindCustDeleteTB.Location = new System.Drawing.Point(103, 73);
+            this.FindCustDeleteTB.Name = "FindCustDeleteTB";
+            this.FindCustDeleteTB.Size = new System.Drawing.Size(200, 20);
+            this.FindCustDeleteTB.TabIndex = 19;
+            // 
+            // DeleteCustBtn
+            // 
+            this.DeleteCustBtn.Location = new System.Drawing.Point(115, 140);
+            this.DeleteCustBtn.Name = "DeleteCustBtn";
+            this.DeleteCustBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteCustBtn.TabIndex = 18;
+            this.DeleteCustBtn.Text = "Delete";
+            this.DeleteCustBtn.UseVisualStyleBackColor = true;
+            this.DeleteCustBtn.Click += new System.EventHandler(this.DeleteCustBtn_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(9, 76);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.TabIndex = 17;
+            this.label22.Text = "Personal Number";
+            // 
+            // GenreResetBtn
+            // 
+            this.GenreResetBtn.Location = new System.Drawing.Point(217, 136);
+            this.GenreResetBtn.Name = "GenreResetBtn";
+            this.GenreResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.GenreResetBtn.TabIndex = 30;
+            this.GenreResetBtn.Text = "Reset";
+            this.GenreResetBtn.UseVisualStyleBackColor = true;
+            this.GenreResetBtn.Click += new System.EventHandler(this.GenreResetBtn_Click);
+            // 
+            // ExistBtn
+            // 
+            this.ExistBtn.Location = new System.Drawing.Point(318, 68);
+            this.ExistBtn.Name = "ExistBtn";
+            this.ExistBtn.Size = new System.Drawing.Size(55, 21);
+            this.ExistBtn.TabIndex = 29;
+            this.ExistBtn.Text = "Exist";
+            this.ExistBtn.UseVisualStyleBackColor = true;
+            this.ExistBtn.Click += new System.EventHandler(this.ExistBtn_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(157, 42);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(95, 13);
+            this.label21.TabIndex = 28;
+            this.label21.Text = "Write Down Genre";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Indigo;
+            this.label23.Location = new System.Drawing.Point(131, 108);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(0, 16);
+            this.label23.TabIndex = 27;
+            // 
+            // GenreTB
+            // 
+            this.GenreTB.Location = new System.Drawing.Point(111, 69);
+            this.GenreTB.Name = "GenreTB";
+            this.GenreTB.Size = new System.Drawing.Size(200, 20);
+            this.GenreTB.TabIndex = 26;
+            // 
+            // GenreDeleteBtn
+            // 
+            this.GenreDeleteBtn.Location = new System.Drawing.Point(123, 136);
+            this.GenreDeleteBtn.Name = "GenreDeleteBtn";
+            this.GenreDeleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.GenreDeleteBtn.TabIndex = 25;
+            this.GenreDeleteBtn.Text = "Delete";
+            this.GenreDeleteBtn.UseVisualStyleBackColor = true;
+            this.GenreDeleteBtn.Click += new System.EventHandler(this.GenreDeleteBtn_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(61, 72);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(36, 13);
+            this.label24.TabIndex = 24;
+            this.label24.Text = "Genre";
+            // 
+            // ResetAuthorDataBtn
+            // 
+            this.ResetAuthorDataBtn.Location = new System.Drawing.Point(195, 137);
+            this.ResetAuthorDataBtn.Name = "ResetAuthorDataBtn";
+            this.ResetAuthorDataBtn.Size = new System.Drawing.Size(75, 23);
+            this.ResetAuthorDataBtn.TabIndex = 37;
+            this.ResetAuthorDataBtn.Text = "Reset";
+            this.ResetAuthorDataBtn.UseVisualStyleBackColor = true;
+            this.ResetAuthorDataBtn.Click += new System.EventHandler(this.ResetAuthorDataBtn_Click);
+            // 
+            // ExistAuthorBtn
+            // 
+            this.ExistAuthorBtn.Location = new System.Drawing.Point(296, 69);
+            this.ExistAuthorBtn.Name = "ExistAuthorBtn";
+            this.ExistAuthorBtn.Size = new System.Drawing.Size(55, 21);
+            this.ExistAuthorBtn.TabIndex = 36;
+            this.ExistAuthorBtn.Text = "Exist";
+            this.ExistAuthorBtn.UseVisualStyleBackColor = true;
+            this.ExistAuthorBtn.Click += new System.EventHandler(this.ExistAuthorBtn_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(135, 43);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(128, 13);
+            this.label25.TabIndex = 35;
+            this.label25.Text = "Write Down Author Name";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Indigo;
+            this.label26.Location = new System.Drawing.Point(109, 109);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(0, 16);
+            this.label26.TabIndex = 34;
+            // 
+            // AuthorDelTB
+            // 
+            this.AuthorDelTB.Location = new System.Drawing.Point(89, 70);
+            this.AuthorDelTB.Name = "AuthorDelTB";
+            this.AuthorDelTB.Size = new System.Drawing.Size(200, 20);
+            this.AuthorDelTB.TabIndex = 33;
+            // 
+            // DeleteAuthorBtn
+            // 
+            this.DeleteAuthorBtn.Location = new System.Drawing.Point(101, 137);
+            this.DeleteAuthorBtn.Name = "DeleteAuthorBtn";
+            this.DeleteAuthorBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteAuthorBtn.TabIndex = 32;
+            this.DeleteAuthorBtn.Text = "Delete";
+            this.DeleteAuthorBtn.UseVisualStyleBackColor = true;
+            this.DeleteAuthorBtn.Click += new System.EventHandler(this.DeleteAuthorBtn_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(28, 73);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(38, 13);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "Author";
+            // 
+            // ResetBookBTN
+            // 
+            this.ResetBookBTN.Location = new System.Drawing.Point(207, 140);
+            this.ResetBookBTN.Name = "ResetBookBTN";
+            this.ResetBookBTN.Size = new System.Drawing.Size(75, 23);
+            this.ResetBookBTN.TabIndex = 30;
+            this.ResetBookBTN.Text = "Reset";
+            this.ResetBookBTN.UseVisualStyleBackColor = true;
+            this.ResetBookBTN.Click += new System.EventHandler(this.ResetBookBTN_Click);
+            // 
+            // FindBookDeleteBtn
+            // 
+            this.FindBookDeleteBtn.Location = new System.Drawing.Point(308, 72);
+            this.FindBookDeleteBtn.Name = "FindBookDeleteBtn";
+            this.FindBookDeleteBtn.Size = new System.Drawing.Size(55, 21);
+            this.FindBookDeleteBtn.TabIndex = 29;
+            this.FindBookDeleteBtn.Text = "Find";
+            this.FindBookDeleteBtn.UseVisualStyleBackColor = true;
+            this.FindBookDeleteBtn.Click += new System.EventHandler(this.FindBookDeleteBtn_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(110, 48);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(172, 13);
+            this.label28.TabIndex = 28;
+            this.label28.Text = "Write Down Serial Number of Book";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Indigo;
+            this.label29.Location = new System.Drawing.Point(121, 112);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(0, 16);
+            this.label29.TabIndex = 27;
+            // 
+            // BookDeleteTB
+            // 
+            this.BookDeleteTB.Location = new System.Drawing.Point(101, 73);
+            this.BookDeleteTB.Name = "BookDeleteTB";
+            this.BookDeleteTB.Size = new System.Drawing.Size(200, 20);
+            this.BookDeleteTB.TabIndex = 26;
+            // 
+            // DeleteBookBtn
+            // 
+            this.DeleteBookBtn.Location = new System.Drawing.Point(113, 140);
+            this.DeleteBookBtn.Name = "DeleteBookBtn";
+            this.DeleteBookBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBookBtn.TabIndex = 25;
+            this.DeleteBookBtn.Text = "Delete";
+            this.DeleteBookBtn.UseVisualStyleBackColor = true;
+            this.DeleteBookBtn.Click += new System.EventHandler(this.DeleteBookBtn_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 76);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(73, 13);
+            this.label30.TabIndex = 24;
+            this.label30.Text = "Serial Number";
             // 
             // Form1
             // 
@@ -786,6 +1169,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustommersDGV)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ReportDGV)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -857,6 +1249,39 @@
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button ResetBtn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button ResetCustDataBtn;
+        private System.Windows.Forms.Button FindCustDeleteBtn;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label FindCustDataLbl;
+        private System.Windows.Forms.TextBox FindCustDeleteTB;
+        private System.Windows.Forms.Button DeleteCustBtn;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button GenreResetBtn;
+        private System.Windows.Forms.Button ExistBtn;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button GenreDeleteBtn;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox GenreTB;
+        private System.Windows.Forms.Button ResetAuthorDataBtn;
+        private System.Windows.Forms.Button ExistAuthorBtn;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox AuthorDelTB;
+        private System.Windows.Forms.Button DeleteAuthorBtn;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button ResetBookBTN;
+        private System.Windows.Forms.Button FindBookDeleteBtn;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox BookDeleteTB;
+        private System.Windows.Forms.Button DeleteBookBtn;
+        private System.Windows.Forms.Label label30;
     }
 }
 
